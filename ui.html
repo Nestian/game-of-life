@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Game of Life</title>
+  </head>
+  <body onload="createUITable()">
+    <table id="grid-table"></table>
+    <div class="buttons-container">
+        <div id="step-div">
+            <button id="start" onclick="startGame()">Start</button>
+            <button id="step" onclick="applyRules()">Step</button>
+            <button id="pause" onclick="pauseGame()">Pause</button>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="grid.js" ></script>
+    <script type="text/javascript" src="rules.js" ></script>
+  </body>
+</html>
