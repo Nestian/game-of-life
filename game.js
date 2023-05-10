@@ -2,19 +2,23 @@
 // start button sets to true, pause button sets to false  
 var flag = false;
 
-var delayInSeconds = 0.5 // the delay between each generation in the game of life
-// converts the delay in milliseconds to be compatible with setTimeout of JS
-var delay = delayInSeconds * 1000 
-
 // loops the game of life until the game is paused (stopped) by a button
 function loopGame() {
   if (!flag) return;
+  // the delay between each generation in the game of life (0.5 seconds by default)
+  var delayDropdown = document.getElementById('simSpeed');
+  var delayInSeconds = parseFloat(delayDropdown.value);
+  // converts the delay in milliseconds to be compatible with setTimeout of JS
+  var delay = delayInSeconds * 1000;
   applyRules(); // apply the rules at each generation
-  renderGrid(); // render the changes to the state
+
+  if (delay > 0.002) { // don't render the grid if set to highest speed (0 delay)
+    renderGrid(); // render the changes to the state
+  } 
   // wait for N milliseconds before calculating the next generation;
-  // gives the user enough time to visualize the changes on screen;
-  // NOTE: if resolution gets higher (more cells) this might not be neccessary.
-  setTimeout(loopGame, delay); 
+    // gives the user enough time to visualize the changes on screen;
+    // NOTE: if resolution gets higher (more cells) this might not be neccessary.
+  setTimeout(loopGame, delay);
 }
 
 function startGame() {

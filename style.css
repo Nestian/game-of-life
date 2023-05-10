@@ -7,7 +7,7 @@
   text-transform: uppercase;
   color: #faed00;
   /*
-  Shadowed styling was inspired from: https://blog.logrocket.com/five-cool-css-header-styles-with-cross-browser-compatibility/ 
+  3-D Shadowed styling was inspired from: https://blog.logrocket.com/five-cool-css-header-styles-with-cross-browser-compatibility/ 
   */
   text-shadow: 1px 1px 0px #4d5300,
                1px 2px 0px #4d5300,
@@ -39,7 +39,7 @@ td {
   margin-top: 20px;
 }
 
-#step-div {
+#settings-div {
   display: flex;
   justify-content: center;
   align-items: center;

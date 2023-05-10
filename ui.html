@@ -7,7 +7,17 @@
     <div id = "title">Game of Life</div>
     <table id="grid-table"></table>
     <div class="buttons-container">
-        <div id="step-div">
+        <div id="settings-div">
+            <div id="simDropdown">
+              <label for="simSpeed">Select simulation speed:</label>
+              <select name="speed" id="simSpeed">
+              <option value="0.5">--Please choose an option--</option>
+              <option value="0.75">slow</option>
+              <option value="0.5">medium</option>
+              <option value="0.25">fast</option>
+              <option value="0.001">highest (AVOID WITH EPILEPSY)</option>
+              </select>
+            </div>
             <div class="Patterns">
               <button onclick="toggleDropdown()" class="dropbtn">Pattern</button>
               <div id="myDropdown" class="dropdown-content">

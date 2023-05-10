@@ -1,3 +1,4 @@
+// functions to set the style of the title
 function setTitleRed() {
     const title = document.getElementById('title');
     title.style.color = "#fa2500";
