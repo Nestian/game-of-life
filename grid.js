@@ -29,21 +29,23 @@ function createUITable() {
     }
 }
 
+// utility function to check whether the row & col index are within grid boundary
+function isWithinGridBoundary(row, col) {
+    if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
+      return true;
+    }
+    return false;
+  }
 
-// Changes the state of the cell on click:
-// dead (white) -> alive (black) OR
-// alive (black) -> dead (white) 
-function handleCellClick(event) {
-    const cell = event.target;
-    const row = cell.parentNode;
-    const rowIndex = row.rowIndex;
-    const columnIndex = cell.cellIndex;
-    let prevValue = grid[rowIndex][columnIndex];
+function updateValues (row, col) {
+    let cell = document.getElementById("grid-table").rows[row].cells[col];
+
+    let prevValue = grid[row][col];
     if (prevValue == 0) {
-        grid[rowIndex][columnIndex] = 1; // change the grid value
+        grid[row][col] = 1; // change the grid value
         cell.style.backgroundColor = 'black'; // render the new state 
     } else {
-        grid[rowIndex][columnIndex] = 0;
+        grid[row][col] = 0;
         cell.style.backgroundColor = 'white'
     }
 }

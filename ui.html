@@ -7,6 +7,26 @@
     <table id="grid-table"></table>
     <div class="buttons-container">
         <div id="step-div">
+            <div class="Patterns">
+              <button onclick="toggleDropdown()" class="dropbtn">Pattern</button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="javascript:setPattern('default');">Single Cell</a>
+                <a href="javascript:setPattern('box');">Box</a>
+                <a href="javascript:setPattern('beeHive');">Bee Hive</a>
+                <a href="javascript:setPattern('loaf');">Loaf</a>
+                <a href="javascript:setPattern('boat');">Boat</a>
+                <a href="javascript:setPattern('tub');">Tub</a>
+                <a href="javascript:setPattern('blinker');">Blinker</a>
+                <a href="javascript:setPattern('toad');">Toad</a>
+                <a href="javascript:setPattern('beacon');">Beacon</a>
+                <a href="javascript:setPattern('pulsar');">Pulsar</a>
+                <a href="javascript:setPattern('penta');">Penta</a>
+                <a href="javascript:setPattern('glider');">Glider</a>
+                <a href="javascript:setPattern('lightShip');">Light Ship</a>
+                <a href="javascript:setPattern('mediumShip');">Medium Ship</a>
+                <a href="javascript:setPattern('heavyShip');">Heavy Ship</a>
+              </div>
+            </div>
             <button id="start" onclick="startGame()">Start</button>
             <button id="step" onclick="applyRules()">Step</button>
             <button id="pause" onclick="pauseGame()">Pause</button>
@@ -15,5 +35,12 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="grid.js" ></script>
     <script type="text/javascript" src="rules.js" ></script>
+    <script type="text/javascript" src="patterns.js" ></script>
+    <script>
+    /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function toggleDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }</script>
   </body>
 </html>

@@ -12,7 +12,7 @@ function countAliveNeighbours(cellRow, cellCol) {
             continue;
           }
           // Check if the neighboring cell is within the bounds of the grid
-          if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
+          if (isWithinGridBoundary(row,col)) {
             if  (grid[row][col] == 1) {
                 nAlive += 1;
             }
@@ -22,6 +22,7 @@ function countAliveNeighbours(cellRow, cellCol) {
 
     return nAlive;
 }
+
 
 // The rules to apply at each generation
 function applyRules() {
