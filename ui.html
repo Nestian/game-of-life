@@ -4,6 +4,7 @@
     <title>Game of Life</title>
   </head>
   <body onload="createUITable()">
+    <div id = "title">Game of Life</div>
     <table id="grid-table"></table>
     <div class="buttons-container">
         <div id="step-div">
@@ -28,14 +29,17 @@
               </div>
             </div>
             <button id="start" onclick="startGame()">Start</button>
-            <button id="step" onclick="applyRules()">Step</button>
+            <button id="step" onclick="stepGame()">Step</button>
             <button id="pause" onclick="pauseGame()">Pause</button>
+            <button id="clear" onclick="clearGame()">Clear</button>
         </div>
     </div>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="grid.js" ></script>
     <script type="text/javascript" src="rules.js" ></script>
     <script type="text/javascript" src="patterns.js" ></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="styleControllers.js"></script>
     <script>
     /* When the user clicks on the button, 
       toggle between hiding and showing the dropdown content */

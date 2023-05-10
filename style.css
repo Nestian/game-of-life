@@ -1,5 +1,28 @@
+#title {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  color: #faed00;
+  /*
+  Shadowed styling was inspired from: https://blog.logrocket.com/five-cool-css-header-styles-with-cross-browser-compatibility/ 
+  */
+  text-shadow: 1px 1px 0px #4d5300,
+               1px 2px 0px #4d5300,
+               1px 3px 0px #4d5300,
+               1px 4px 0px #4d5300,
+               1px 5px 0px #4d5300,
+               1px 6px 0px #4d5300,
+               1px 10px 5px rgba(16, 16, 16, 0.5),
+               1px 15px 10px rgba(16, 16, 16, 0.4),
+               1px 20px 30px rgba(16, 16, 16, 0.3),
+               1px 25px 50px rgba(16, 16, 16, 0.2);
+}
+
 #grid-table {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-left: 50px;
   margin-right: 50px;
   border-collapse: collapse;
@@ -11,6 +34,7 @@ td {
   border: 1px solid black;
 }
 
+/* container for buttons to interface with the game */
 .buttons-container {
   margin-top: 20px;
 }
@@ -21,6 +45,7 @@ td {
   align-items: center;
 }
 
+/* styling of individual buttons */
 button {
 	background-color: blue;
   border: 1 px solid white;

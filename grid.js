@@ -37,6 +37,17 @@ function isWithinGridBoundary(row, col) {
     return false;
   }
 
+// checks if board has any living cells, which can be used prior 
+// to starting the game to advise users to initialize living cells on the grid
+function containsLivingCells() {
+    for (let row = 0; row < grid.length; row++) {
+      for (let col = 0; col < grid[0].length; col++) {
+          if (grid[row][col] == 1) return true;
+      }
+    }
+    return false;
+  }
+
 function updateValues (row, col) {
     let cell = document.getElementById("grid-table").rows[row].cells[col];
 
@@ -50,14 +61,18 @@ function updateValues (row, col) {
     }
 }
 
+var generationCount = 0;
+var aliveCount = 0;
 // Render the current state of the grid on the screen
 function renderGrid() {
+    aliveCount = 0;
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[0].length; col++) {
             // obtain the corresponding element in the document
             const td = document.getElementById('grid-table').rows[row].cells[col];
             // color based on state
             if (grid[row][col] == 1) { 
+                aliveCount += 1;
                 td.style.backgroundColor = 'black'
             } 
             else {
@@ -65,4 +80,29 @@ function renderGrid() {
             }
         }
     }
+    generationCount += 1;
+
+    const title = document.getElementById('title');
+    if (displayDefaultTitle) {
+        title.innerHTML = 'Game of Life';
+        setTitleYellow();
+    } else {
+    
+        if (aliveCount == 0) {
+            title.innerHTML = `Game over! The cells lived for ${generationCount} generations.`;
+            setTitleRed();
+            flag = false;
+        } 
+        else {
+            title.innerHTML = `Generation ${generationCount}, Total Living Cells: ${aliveCount}`;
+        }
+        if (aliveCount > 0 && aliveCount < 50) {
+            setTitleYellow();
+        }
+        else if (aliveCount > 50 && aliveCount < 100) {
+            setTitleOrange();
+        } else if (aliveCount >= 100) {
+            setTitleGreen();
+        }
+ }
 }
