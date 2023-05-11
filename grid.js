@@ -3,6 +3,10 @@ const deviceWidth  = window.innerWidth || document.documentElement.clientWidth |
 // the height of user's device (window/HTML)
 const deviceHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
 
+// to store the information about the simulation which can then be exported to report
+var reportGenerations = [];
+var reportAliveCounts = [];
+
 // initialize the grid with default size (small)
 setGridSize('default');
 
@@ -39,6 +43,8 @@ function setGridSize(size) {
     console.log(`Number of cells: ${ROWS*COLS}`);
     console.log();
     createUITable();
+    reportGenerations.length = 0;
+    reportAliveCounts.length = 0;
 }
 
 // Represent the game of life as a table (grid)
@@ -94,9 +100,6 @@ function updateValues (row, col) {
     }
 }
 
-var reportGenerations = [];
-var reportAliveCounts = [];
-
 var generationCount = 0;
 var aliveCount = 0;
 // Render the current state of the grid on the screen
@@ -145,5 +148,4 @@ function renderGrid() {
             setTitleGreen();
         }
  }
- console.log(reportGenerations);
 }

@@ -28,8 +28,10 @@ function startGame() {
     title.style.color = '#faed00';
     return;
   }
-  reportGenerations.length = 0;
-  reportAliveCounts.length = 0;
+  if (generationCount == 0) {
+    reportGenerations.length = 0;
+    reportAliveCounts.length = 0;
+  }
   displayDefaultTitle = false;
   flag = true;
   loopGame();
@@ -65,6 +67,7 @@ function generateReport() {
       text.length = 0;
     } else if (i == reportGenerations.length-1) { // write the remaining content at the end of the document
       doc.text(text,20,20);
+      text = [];
     }
   }
   doc.save('report.pdf');
