@@ -3,18 +3,48 @@ const deviceWidth  = window.innerWidth || document.documentElement.clientWidth |
 // the height of user's device (window/HTML)
 const deviceHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
 
-const tableHeight = 0.6 * deviceHeight;
+// initialize the grid with default size (small)
+setGridSize('default');
 
-const boxSize = 20; // pixel size of each square box side in the grid-table
-const ROWS = parseInt(tableHeight / boxSize); // number of rows in the grid
-const COLS = parseInt(deviceWidth / boxSize); // number of cols in the grid
-
-// Initialize the grid with all cells dead, e.g. value 0
-let grid = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+// sets the grid to a selected size (small, medium, large or very large)
+function setGridSize(size) {
+    switch (size) {
+        case 'small':
+            boxSize = 20;
+            tableHeight = 0.6 * deviceHeight;
+            ROWS = parseInt((deviceHeight * 0.6) / boxSize);
+            COLS = parseInt(deviceWidth / boxSize);
+            break;
+        case 'large':
+            boxSize = 5;
+            tableHeight = 0.4 * deviceHeight;
+            ROWS = parseInt(tableHeight / boxSize);
+            COLS = parseInt(deviceWidth / boxSize);
+            break;
+        case 'very large':
+            boxSize = 2;
+            tableHeight = 0.1 * deviceHeight;
+            ROWS = parseInt((deviceHeight * 0.3) / boxSize);
+            COLS = parseInt((deviceWidth * 0.4) / boxSize);
+            break;
+        default:
+            boxSize = 10;
+            ROWS = parseInt((deviceHeight * 0.5) / boxSize);
+            COLS = parseInt(deviceWidth / boxSize);
+    }
+    grid = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+    console.log('Displaying current information regarding window and grid size:')
+    console.log(`Window resolution: ${deviceWidth}:${deviceHeight}`);
+    console.log(`Grid size: ${ROWS} X ${COLS}`);
+    console.log(`Number of cells: ${ROWS*COLS}`);
+    console.log();
+    createUITable();
+}
 
 // Represent the game of life as a table (grid)
 function createUITable() {
     const table = document.getElementById('grid-table');
+    $('#grid-table tr').remove();
     // Add ROWS * COLS elements  to the table
     for (let i = 0; i < ROWS; i++) {
         const tr = document.createElement('tr');
@@ -23,6 +53,9 @@ function createUITable() {
             // To each table element (cell) add handler to
             // allow users to change the state of each cell on click
             td.addEventListener('click', handleCellClick);
+            const sizeString = boxSize.toString() + 'px';
+            td.style.width = sizeString;
+            td.style.height = sizeString;
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -61,6 +94,9 @@ function updateValues (row, col) {
     }
 }
 
+var reportGenerations = [];
+var reportAliveCounts = [];
+
 var generationCount = 0;
 var aliveCount = 0;
 // Render the current state of the grid on the screen
@@ -82,11 +118,15 @@ function renderGrid() {
     }
     generationCount += 1;
 
+    // render the title by coloring/changing the text depending on state of the game:
     const title = document.getElementById('title');
     if (displayDefaultTitle) {
         title.innerHTML = 'Game of Life';
         setTitleYellow();
     } else {
+        // add the respective values for report generation
+        reportGenerations.push(generationCount);
+        reportAliveCounts.push(aliveCount);
     
         if (aliveCount == 0) {
             title.innerHTML = `Game over! The cells lived for ${generationCount} generations.`;
@@ -105,4 +145,5 @@ function renderGrid() {
             setTitleGreen();
         }
  }
+ console.log(reportGenerations);
 }

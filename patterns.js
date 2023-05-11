@@ -21,10 +21,12 @@ function handleCellClick(event) {
         case 'lightShip': {lightWeightSpaceshipPattern(rowIndex, columnIndex); break;}
         case 'mediumShip': {mediumWeightSpaceshipPattern(rowIndex, columnIndex); break;}
         case 'heavyShip': {heavyWeightSpaceshipPattern(rowIndex, columnIndex); break;}
+        case 'gliderGun': {gosperGliderGun(rowIndex, columnIndex); break;}
         default: {updateValues(rowIndex, columnIndex); break;}
     }
 }
 
+// flag to indicate the pattern to create when clicking on a table cell
 var selectedMode = 'default'
 
 function setPattern(name) {
@@ -241,6 +243,37 @@ function heavyWeightSpaceshipPattern(row, col) {
         col+4,
         col-2, col+4,
         col-1, col, col+1, col+2, col+3, col+4
+    ]
+    for (let i=0; i < rowIndeces.length; i++) {
+        if (isWithinGridBoundary(rowIndeces[i], colIndeces[i])) {
+            updateValues(rowIndeces[i], colIndeces[i]);
+        }
+    }
+}
+
+// Pattern that generates a glider every 15 generations
+function gosperGliderGun(row, col) {
+    rowIndeces = [
+        row-4,
+        row-3,row-3,
+        row-2,row-2,row-2,row-2,row-2,row-2,
+        row-1,row-1,row-1,row-1,row-1,row-1,
+        row,row,row,row,row,row,
+        row+1,row+1,row+1,row+1,row+1,row+1,row+1,row+1,
+        row+2,row+2,row+2,
+        row+3,row+3,row+3,
+        row+4,row+4,
+    ]
+    colIndeces = [
+        col+24,
+        col+22,col+24,
+        col+12,col+13,col+20,col+21,col+34,col+35,
+        col+11,col+15,col+20,col+21,col+34,col+35,
+        col,col+1,col+10,col+16,col+20,col+21,
+        col,col+1,col+10,col+14,col+16,col+17,col+22,col+24,
+        col+10,col+16,col+24,
+        col+11,col+15,
+        col+12,col+13
     ]
     for (let i=0; i < rowIndeces.length; i++) {
         if (isWithinGridBoundary(rowIndeces[i], colIndeces[i])) {

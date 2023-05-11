@@ -95,3 +95,16 @@ button:hover{
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+#simDropdown {
+  margin-left: 30px;
+}
+
+#speedDropdown {
+  margin-left: 30px;
+}
+
+#patternDropdown {
+  margin-left: 30px;
+}
+

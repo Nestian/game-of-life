@@ -8,46 +8,60 @@
     <table id="grid-table"></table>
     <div class="buttons-container">
         <div id="settings-div">
+            <div id="sizeDropdown">
+              <label for="gridSize">Select grid size:</label>
+              <select name="size" id="gridSize" onchange="setGridSize(value)">
+              <option value="medium">medium</option>
+              <option value="small">small</option>
+              <option value="large">large</option>
+              <option value="very large">very large</option>
+              </select>
+            </div>
             <div id="simDropdown">
               <label for="simSpeed">Select simulation speed:</label>
               <select name="speed" id="simSpeed">
-              <option value="0.5">--Please choose an option--</option>
-              <option value="0.75">slow</option>
               <option value="0.5">medium</option>
+              <option value="0.75">slow</option>
               <option value="0.25">fast</option>
-              <option value="0.001">highest (AVOID WITH EPILEPSY)</option>
+              <option value="0.001">very fast</option>
               </select>
             </div>
-            <div class="Patterns">
-              <button onclick="toggleDropdown()" class="dropbtn">Pattern</button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="javascript:setPattern('default');">Single Cell</a>
-                <a href="javascript:setPattern('box');">Box</a>
-                <a href="javascript:setPattern('beeHive');">Bee Hive</a>
-                <a href="javascript:setPattern('loaf');">Loaf</a>
-                <a href="javascript:setPattern('boat');">Boat</a>
-                <a href="javascript:setPattern('tub');">Tub</a>
-                <a href="javascript:setPattern('blinker');">Blinker</a>
-                <a href="javascript:setPattern('toad');">Toad</a>
-                <a href="javascript:setPattern('beacon');">Beacon</a>
-                <a href="javascript:setPattern('pulsar');">Pulsar</a>
-                <a href="javascript:setPattern('penta');">Penta</a>
-                <a href="javascript:setPattern('glider');">Glider</a>
-                <a href="javascript:setPattern('lightShip');">Light Ship</a>
-                <a href="javascript:setPattern('mediumShip');">Medium Ship</a>
-                <a href="javascript:setPattern('heavyShip');">Heavy Ship</a>
-              </div>
+            <div id="patternDropdown">
+              <label for="pattern">Select pattern:</label>
+              <select name="speed" id="pattern" onchange="setPattern(value)">
+              <option value="default">Single cell</option>
+              <option value="box">Box</option>
+              <option value="beeHive">Bee Hive</option>
+              <option value="loaf">Loaf</option>
+              <option value="boat">Boat</option>
+              <option value="tub">Tub</option>
+              <option value="blinker">Blinker</option>
+              <option value="toad">Toad</option>
+              <option value="beacon">Beacon</option>
+              <option value="pulsar">Pulsar</option>
+              <option value="penta">Penta</option>
+              <option value="glider">Glider</option>
+              <option value="lightShip">Light Ship</option>
+              <option value="mediumShip">Medium Ship</option>
+              <option value="heavyShip">Heavy Ship</option>
+              <option value="gliderGun">Glider Gun</option>
+              </select>
             </div>
             <button id="start" onclick="startGame()">Start</button>
             <button id="step" onclick="stepGame()">Step</button>
             <button id="pause" onclick="pauseGame()">Pause</button>
             <button id="clear" onclick="clearGame()">Clear</button>
+            <button id="report" onclick="generateReport()">Gen Report</button>
         </div>
     </div>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- JQuery source script below -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- PDF generation source code below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+    <script type="text/javascript" src="patterns.js" ></script>
     <script type="text/javascript" src="grid.js" ></script>
     <script type="text/javascript" src="rules.js" ></script>
-    <script type="text/javascript" src="patterns.js" ></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="styleControllers.js"></script>
     <script>
