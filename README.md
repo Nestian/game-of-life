@@ -1,7 +1,8 @@
 # Game of Life
 
 ## How to start:
-Open 'ui.html' in a web browser. 
+Open 'ui.html' in a web browser. Although, the game should run on different browsers,
+it is recommended to use Google Chrome since the game was thoroughly tested there.
 
 ## Rules of game of life:
 * Any live cell with fewer than two live neighbors dies (under-population).
